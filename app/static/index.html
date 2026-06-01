@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oracle Python ApexCharts Demo</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Oracle Database Free · Python 3.12 · python-oracledb</p>
+          <h1>ApexCharts row volume demo</h1>
+        </div>
+        <div id="status" class="status-pill">Connecting</div>
+      </header>
+
+      <section class="control-band" aria-label="Row count">
+        <div class="segmented-control" role="tablist" aria-label="Chart row count">
+          <button class="preset-button is-active" type="button" data-rows="100">100</button>
+          <button class="preset-button" type="button" data-rows="1000">1,000</button>
+          <button class="preset-button" type="button" data-rows="10000">10,000</button>
+          <button class="preset-button" type="button" data-rows="100000">100,000</button>
+        </div>
+      </section>
+
+      <section class="metric-grid" aria-label="Query summary">
+        <article class="metric-card">
+          <span>Rows</span>
+          <strong id="rowsMetric">100</strong>
+        </article>
+        <article class="metric-card">
+          <span>Oracle query</span>
+          <strong id="queryMetric">-- ms</strong>
+        </article>
+        <article class="metric-card">
+          <span>Browser load</span>
+          <strong id="browserMetric">-- ms</strong>
+        </article>
+        <article class="metric-card">
+          <span>Payload</span>
+          <strong id="payloadMetric">-- KB</strong>
+        </article>
+      </section>
+
+      <section class="chart-band" aria-label="Chart">
+        <div id="chart"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

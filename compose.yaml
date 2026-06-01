@@ -1,0 +1,31 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:slim
+    container_name: oracle-apex-chart-db
+    environment:
+      ORACLE_PASSWORD: OraclePassword123
+      APP_USER: demo
+      APP_USER_PASSWORD: DemoPassword123
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+
+  app:
+    build:
+      context: ./app
+    container_name: oracle-apex-chart-app
+    depends_on:
+      - oracle
+    environment:
+      DB_USER: demo
+      DB_PASSWORD: DemoPassword123
+      DB_DSN: oracle:1521/FREEPDB1
+      DB_MIN_POOL_SIZE: "1"
+      DB_MAX_POOL_SIZE: "4"
+      SEED_ROWS: "100000"
+    ports:
+      - "8000:8000"
+
+volumes:
+  oracle-data:
